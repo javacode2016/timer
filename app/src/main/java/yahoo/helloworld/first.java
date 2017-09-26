@@ -19,12 +19,12 @@ import java.util.TimerTask;
  */
 
 public class first extends Activity {
-    Button btnStart, btnStop, btnPause, btnReset;
+    Button btnStart, btnStop, btnReset;
     TextView tvTime;
     Timer timer;
     // Get a handler that can be used to post to the main thread
     Handler mainHandler;
-
+    private boolean isRunning = false;
     private int minutes, seconds;
 
 
@@ -35,7 +35,6 @@ public class first extends Activity {
 
         btnStart = (Button) findViewById(R.id.btnStart);
         btnStop = (Button) findViewById(R.id.btnStop);
-        btnPause = (Button) findViewById(R.id.btnPause);
         btnReset = (Button) findViewById(R.id.btnReset);
         tvTime = (TextView) findViewById(R.id.tvTime);
         timer = new Timer();
@@ -46,13 +45,35 @@ public class first extends Activity {
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                timer.schedule(new timertask(), 0, 1000);
+                if (!isRunning)
+                    onTimerStart();
+                else
+                    onTimerPause();
+            }
+        });
+        btnStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
 
 //вац
 
+    }
+
+
+    private void onTimerPause() {
+        isRunning = false;
+        btnStart.setText(getResources().getString(R.string.start));
+    }
+
+
+    private void onTimerStart() {
+        isRunning = true;
+        btnStart.setText(getResources().getString(R.string.pause));
+        timer.schedule(new timertask(), 0, 1000);
     }
 
     private void tick() {
@@ -78,7 +99,7 @@ public class first extends Activity {
     class timertask extends TimerTask {
         @Override
         public void run() {
-            tick();
+            if (isRunning) tick();
         }
     }
 }

@@ -5,12 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="yahoo.helloworld.first">
-    <Button
-        android:id="@+id/btnStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/start" />
 
     <TextView
         android:id="@+id/tvTime"
@@ -18,12 +12,20 @@
         android:layout_height="wrap_content"
         android:gravity="center"/>
 
+
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
         >
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/start" />
 
         <Button
             android:id="@+id/btnStop"
@@ -31,13 +33,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/stop" />
-
-        <Button
-            android:id="@+id/btnPause"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/pause" />
 
         <Button
             android:id="@+id/btnReset"
